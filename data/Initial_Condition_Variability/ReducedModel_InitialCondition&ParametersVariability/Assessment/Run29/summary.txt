@@ -1,0 +1,96 @@
+********************************************************************************
+*                    ReducedModel_InitialCondition.mlxtran                     *
+*                    November 11, 2020 at 05:10:20                             *
+*                    Monolix version : 5.0.0                                   *
+********************************************************************************
+
+POPULATION PARAMETERS ESTIMATION _______________________________________________
+
+Fixed Effects ----------------------------     se_sa    rse(%)
+rhoS_pop                       :     0.633    0.0935      14.8
+eta_deltaSC_pop                :         0                    
+rhoC_pop                       :      3.05       nan       nan
+eta_rhoC_pop                   :         0                    
+eta_deltaCB_pop                :         0                    
+rhoB_pop                       :     -0.19       nan       nan
+S0_pop                         :  2.35e+04  6.05e+03      25.8
+T0_pop                         :  2.52e+04  3.82e+03      15.1
+
+Standard Deviation of the Random Effects -
+omega_rhoS                     :     0.118    0.0332      28.1
+omega_deltaSC                  :     0.305     0.336       110
+omega_deltaCB                  :      0.19    0.0836      44.1
+omega_S0                       :    0.0218     0.237  1.09e+03
+omega_T0                       :    0.0195       nan       nan
+
+Error Model Parameters -------------------
+b1                             :     0.165    0.0296      17.9
+
+b2                             :     0.174    0.0245      14.1
+
+b3                             :     0.284    0.0674      23.7
+
+Elapsed time (seconds) :  5.7e+02
+CPU time     (seconds) :    8e+02
+ _______________________________________________________________________________
+
+
+CORRELATION MATRIX OF THE ESTIMATES ____________________________________________
+
+Fisher by Stochastic Approximation ---------------------------------------------
+Correlation Matrix :
+     rhoS_pop   1.00000
+     rhoC_pop       nan       nan
+     rhoB_pop       nan       nan       nan
+       S0_pop  -0.87026       nan       nan   1.00000
+       T0_pop   0.84233       nan       nan  -0.96958   1.00000
+   omega_rhoS   0.12203       nan       nan  -0.13906   0.13347   1.00000
+omega_deltaSC  -0.78682       nan       nan   0.90441  -0.90812  -0.12760   1.00000
+omega_deltaCB  -0.66689       nan       nan   0.75909  -0.76497  -0.11019   0.70640   1.00000
+     omega_S0  -0.85965       nan       nan   0.98425  -0.96802  -0.13333   0.90900   0.75289   1.00000
+     omega_T0       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan
+           b1   0.57164       nan       nan  -0.67081   0.66163   0.09320  -0.61401  -0.50869  -0.65900       nan   1.00000
+           b2   0.31083       nan       nan  -0.35514   0.35094   0.02921  -0.30186  -0.26499  -0.35792       nan   0.24054   1.00000
+           b3   0.56498       nan       nan  -0.64921   0.65062   0.09270  -0.69692  -0.52789  -0.65322       nan   0.44227   0.20166   1.00000
+WARNING : Impossible to compute the eigen values of the correlation matrix.
+
+Elapsed time (seconds) :       9
+CPU time     (seconds) :      11
+ -------------------------------------------------------------------------------
+ _______________________________________________________________________________
+
+
+INDIVIDUAL PARAMETERS ESTIMATION _______________________________________________
+
+Individual Parameters Estimation by Conditional Mean ---------------------------
+                       min        Q1    median        Q3       max
+rhoS           :     0.405     0.602     0.627     0.738     0.774
+eta_deltaSC    :    -0.293    0.0276     0.113     0.173     0.489
+rhoC_pop_value :      3.05      3.05      3.05      3.05      3.05
+eta_rhoC       :         0         0         0         0         0
+eta_deltaCB    :    -0.304    -0.212    -0.145     -0.12    -0.098
+rhoB           :     -0.19     -0.19     -0.19     -0.19     -0.19
+S0             :  2.34e+04  2.34e+04  2.35e+04  2.35e+04  2.35e+04
+T0             :  2.51e+04  2.52e+04  2.52e+04  2.53e+04  2.54e+04
+
+Elapsed time (seconds) :     1.9
+CPU time     (seconds) :       2
+ -------------------------------------------------------------------------------
+ _______________________________________________________________________________
+
+
+LOG-LIKELIHOOD ESTIMATION ______________________________________________________
+                                                (is)
+
+-2 x log-likelihood                 :        1775.67
+Akaike Information Criteria   (AIC) :        1801.67
+Bayesian Information Criteria (BIC) :        1800.97
+
+Elapsed time              (seconds) :              3
+CPU time                  (seconds) :              3
+
+
+[Importance Sampling] Standard error        : 0.0764
+                      Sampling distribution : T-distribution with 1 degrees of freedom
+ _______________________________________________________________________________
+

@@ -1,0 +1,10 @@
+rhoS_pop	nan	nan	nan	nan	nan	nan	nan	nan	nan	nan
+rhoC_pop	nan	nan	nan	nan	nan	nan	nan	nan	nan	nan
+rhoB_pop	nan	nan	nan	nan	nan	nan	nan	nan	nan	nan
+S0_pop	nan	nan	nan	1.00000	0.00208	-0.01139	-0.00166	-0.14941	-0.00473	0.00029
+T0_pop	nan	nan	nan	0.00208	1.00000	0.00773	0.00227	-0.00305	-0.04010	-0.16255
+omega_S0	nan	nan	nan	-0.01139	0.00773	1.00000	0.00228	-0.14402	-0.00610	-0.01589
+omega_T0	nan	nan	nan	-0.00166	0.00227	0.00228	1.00000	-0.00203	-0.02126	-0.05961
+b1	nan	nan	nan	-0.14941	-0.00305	-0.14402	-0.00203	1.00000	0.00416	0.00533
+b2	nan	nan	nan	-0.00473	-0.04010	-0.00610	-0.02126	0.00416	1.00000	0.04350
+b3	nan	nan	nan	0.00029	-0.16255	-0.01589	-0.05961	0.00533	0.04350	1.00000

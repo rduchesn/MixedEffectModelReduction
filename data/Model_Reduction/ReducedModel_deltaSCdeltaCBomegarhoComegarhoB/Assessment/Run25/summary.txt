@@ -1,0 +1,86 @@
+********************************************************************************
+*            ReducedModel_deltaSCdeltaCBomegarhoComegarhoB.mlxtran             *
+*            November 06, 2020 at 03:45:53                                     *
+*            Monolix version : 5.0.0                                           *
+********************************************************************************
+
+POPULATION PARAMETERS ESTIMATION _______________________________________________
+
+Fixed Effects ----------------------------     se_sa    rse(%)
+rhoS_pop                       :     0.613    0.0459      7.49
+eta_deltaSC_pop                :         0                    
+rhoC_pop                       :      3.07       nan       nan
+eta_rhoC_pop                   :         0                    
+eta_deltaCB_pop                :         0                    
+rhoB_pop                       :    -0.162       nan       nan
+
+Standard Deviation of the Random Effects -
+omega_rhoS                     :     0.118    0.0333      28.3
+omega_deltaSC                  :     0.304     0.126      41.4
+omega_deltaCB                  :     0.195    0.0541      27.8
+
+Error Model Parameters -------------------
+b1                             :     0.165    0.0219      13.3
+
+b2                             :     0.174    0.0232      13.3
+
+b3                             :     0.283    0.0508        18
+
+Elapsed time (seconds) :  4.5e+02
+CPU time     (seconds) :  6.4e+02
+ _______________________________________________________________________________
+
+
+CORRELATION MATRIX OF THE ESTIMATES ____________________________________________
+
+Fisher by Stochastic Approximation ---------------------------------------------
+Correlation Matrix :
+     rhoS_pop   1.00000
+     rhoC_pop       nan       nan
+     rhoB_pop       nan       nan       nan
+   omega_rhoS   0.01094       nan       nan   1.00000
+omega_deltaSC  -0.00237       nan       nan  -0.01413   1.00000
+omega_deltaCB  -0.02114       nan       nan  -0.00801   0.00562   1.00000
+           b1  -0.02695       nan       nan  -0.01176  -0.00054   0.00677   1.00000
+           b2   0.00039       nan       nan  -0.01821   0.03741   0.01383   0.01235   1.00000
+           b3  -0.00116       nan       nan   0.00694  -0.29973  -0.03551   0.00754  -0.03273   1.00000
+WARNING : Impossible to compute the eigen values of the correlation matrix.
+
+Elapsed time (seconds) :     6.6
+CPU time     (seconds) :       8
+ -------------------------------------------------------------------------------
+ _______________________________________________________________________________
+
+
+INDIVIDUAL PARAMETERS ESTIMATION _______________________________________________
+
+Individual Parameters Estimation by Conditional Mean ---------------------------
+                       min        Q1    median        Q3       max
+rhoS           :     0.384     0.579     0.606     0.717     0.753
+eta_deltaSC    :    -0.281     0.025     0.113     0.169     0.515
+rhoC_pop_value :      3.07      3.07      3.07      3.07      3.07
+eta_rhoC       :         0         0         0         0         0
+eta_deltaCB    :    -0.309    -0.221    -0.153    -0.135    -0.103
+rhoB           :    -0.162    -0.162    -0.162    -0.162    -0.162
+
+Elapsed time (seconds) :     1.4
+CPU time     (seconds) :       1
+ -------------------------------------------------------------------------------
+ _______________________________________________________________________________
+
+
+LOG-LIKELIHOOD ESTIMATION ______________________________________________________
+                                                (is)
+
+-2 x log-likelihood                 :        1777.00
+Akaike Information Criteria   (AIC) :        1795.00
+Bayesian Information Criteria (BIC) :        1794.51
+
+Elapsed time              (seconds) :            2.9
+CPU time                  (seconds) :              3
+
+
+[Importance Sampling] Standard error        : 0.0459
+                      Sampling distribution : T-distribution with 5 degrees of freedom
+ _______________________________________________________________________________
+

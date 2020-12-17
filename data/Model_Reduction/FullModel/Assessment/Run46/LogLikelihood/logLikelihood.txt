@@ -1,0 +1,5 @@
+criteria	importanceSampling
+-2LL	1762.237
+AIC	1788.237
+BIC	1787.534
+stdError	0.035

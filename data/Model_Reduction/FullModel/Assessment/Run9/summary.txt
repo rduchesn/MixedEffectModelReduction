@@ -1,0 +1,90 @@
+********************************************************************************
+*    SCB_MEM_joint_estimation_DMSO_deltaSC_lognorm_filtered_data_4d.mlxtran    *
+*    January 02, 2019 at 13:40:27                                              *
+*    Monolix version : 5.0.0                                                   *
+********************************************************************************
+
+POPULATION PARAMETERS ESTIMATION _______________________________________________
+
+Fixed Effects ----------------------------     se_sa    rse(%)
+rhoS_pop                       :     0.614    0.0462      7.53
+deltaSC_pop                    :     0.361    0.0568      15.7
+rhoC_pop                       :      3.71     0.482        13
+deltaCB_pop                    :      4.41     0.585      13.3
+rhoB_pop                       :     0.278      0.12      43.1
+
+Standard Deviation of the Random Effects -
+omega_rhoS                     :     0.119    0.0334      28.1
+omega_deltaSC                  :     0.261     0.219        84
+omega_rhoC                     :    0.0987     0.249       252
+omega_deltaCB                  :    0.0813    0.0483      59.4
+omega_rhoB                     :    0.0489       nan       nan
+
+Error Model Parameters -------------------
+b1                             :     0.164    0.0215      13.1
+
+b2                             :     0.179    0.0246      13.7
+
+b3                             :     0.271    0.0591      21.8
+
+Elapsed time (seconds) :  1.2e+02
+CPU time     (seconds) :  1.6e+02
+ _______________________________________________________________________________
+
+
+CORRELATION MATRIX OF THE ESTIMATES ____________________________________________
+
+Fisher by Stochastic Approximation ---------------------------------------------
+Correlation Matrix :
+     rhoS_pop   1.00000
+  deltaSC_pop   0.00855   1.00000
+     rhoC_pop   0.02008  -0.15128   1.00000
+  deltaCB_pop   0.03356  -0.18028   0.86783   1.00000
+     rhoB_pop  -0.02187  -0.24051  -0.58255  -0.22339   1.00000
+   omega_rhoS   0.00363   0.00877  -0.02729  -0.01769   0.02457   1.00000
+omega_deltaSC  -0.01627  -0.05197  -0.64691  -0.57664   0.47394   0.00812   1.00000
+   omega_rhoC  -0.03538  -0.06647  -0.61955  -0.40252   0.65993   0.02901   0.44841   1.00000
+omega_deltaCB   0.00952   0.03834  -0.36119  -0.24243   0.26345  -0.02865   0.27269   0.03195   1.00000
+   omega_rhoB       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan
+           b1  -0.02472   0.00269   0.06238   0.04047  -0.05196   0.00603  -0.04498  -0.02738  -0.04491       nan   1.00000
+           b2  -0.01511  -0.09913  -0.22077  -0.10291   0.29510  -0.00553   0.21924   0.24670   0.07142       nan  -0.01089   1.00000
+           b3   0.01814  -0.04852   0.58302   0.52208  -0.37593  -0.01105  -0.63340  -0.42639  -0.26076       nan   0.03216  -0.15579   1.00000
+WARNING : Impossible to compute the eigen values of the correlation matrix.
+
+Elapsed time (seconds) :     2.9
+CPU time     (seconds) :       3
+ -------------------------------------------------------------------------------
+ _______________________________________________________________________________
+
+
+INDIVIDUAL PARAMETERS ESTIMATION _______________________________________________
+
+Individual Parameters Estimation by Conditional Mean ---------------------------
+                min        Q1    median        Q3       max
+rhoS    :     0.382     0.581     0.606      0.72     0.754
+deltaSC :     0.263     0.349     0.369     0.381     0.517
+rhoC    :      3.69      3.69      3.71      3.74      3.75
+deltaCB :       3.9      4.27      4.53       4.6      4.67
+rhoB    :      0.26     0.264     0.272      0.29     0.303
+
+Elapsed time (seconds) :    0.97
+CPU time     (seconds) :       1
+ -------------------------------------------------------------------------------
+ _______________________________________________________________________________
+
+
+LOG-LIKELIHOOD ESTIMATION ______________________________________________________
+                                                (is)
+
+-2 x log-likelihood                 :        1761.34
+Akaike Information Criteria   (AIC) :        1787.34
+Bayesian Information Criteria (BIC) :        1786.64
+
+Elapsed time              (seconds) :            3.7
+CPU time                  (seconds) :              3
+
+
+[Importance Sampling] Standard error        : 0.0732
+                      Sampling distribution : T-distribution with 2 degrees of freedom
+ _______________________________________________________________________________
+

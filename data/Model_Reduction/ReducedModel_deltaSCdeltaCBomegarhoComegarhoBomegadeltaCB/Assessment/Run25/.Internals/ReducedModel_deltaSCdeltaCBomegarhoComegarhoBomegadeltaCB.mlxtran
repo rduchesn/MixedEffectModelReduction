@@ -1,0 +1,151 @@
+<DATAFILE>
+
+[FILEINFO]
+file = '../../../../../AG111-GD16_DMSO_STB_4d.csv'
+delimiter = tab
+header = {ind, time, Y, Ytype}
+
+[CONTENT]
+ind = {use=identifier}
+time = {use=time}
+Y = {use=observation, name={B, T, S}, yname={'B_DM17', 'T_DM17', 'T_LM1'}, type={continuous, continuous, continuous}}
+Ytype = {use=observationtype}
+
+<MODEL>
+
+[INDIVIDUAL]
+input = {rhoS_pop, omega_rhoS, eta_deltaSC_pop, omega_deltaSC, rhoC_pop, eta_rhoC_pop, eta_deltaCB_pop, rhoB_pop}
+
+DEFINITION:
+rhoS = {distribution=normal, typical=rhoS_pop, sd=omega_rhoS}
+eta_deltaSC = {distribution=normal, typical=eta_deltaSC_pop, sd=omega_deltaSC}
+rhoC_pop_value = {distribution=normal, typical=rhoC_pop, no-variability}
+eta_rhoC = {distribution=normal, typical=eta_rhoC_pop, no-variability}
+eta_deltaCB = {distribution=normal, typical=eta_deltaCB_pop, no-variability}
+rhoB = {distribution=normal, typical=rhoB_pop, no-variability}
+
+[LONGITUDINAL]
+input = {rhoS, eta_deltaSC, rhoC_pop_value, eta_rhoC, eta_deltaCB, rhoB, b1, b2, b3}
+
+EQUATION:
+deltaSC_min = 0.1416
+		rhoC_min = 0
+		epsilon = 1.146
+		zeta = 1.246
+		deltaSC_pop = deltaSC_min + epsilon*(rhoC_pop_value - rhoC_min)^( -zeta)
+		deltaSC = deltaSC_pop*exp(eta_deltaSC)
+		
+		rhoC = rhoC_pop_value + eta_rhoC
+		
+		slope = 1.306
+		intercept = -0.504
+		deltaCB_pop = slope*rhoC_pop_value + intercept
+		deltaCB = deltaCB_pop*exp(eta_deltaCB)
+	
+		S_0 = 25000
+		C_0   = 0
+		b_0   = 0
+
+		lambdaS = deltaSC - rhoS ; Net decay rate of the differentiating S cells
+		lambdaC = deltaCB - rhoC ; Net decay rate of the differentiating C cells
+		lambdaB = - rhoB                 ; Net decay rate of the differentiated B cells
+
+		;We set threshold the differences between eigenvalues
+		threshold=0.00001 ;threshold for considering two eigenvalues as different
+		if abs(lambdaC-lambdaS) < threshold
+			bSC=0
+		else
+			bSC=lambdaC-lambdaS
+		end
+
+		if abs(lambdaB-lambdaS) < threshold
+			bSB = 0
+		else
+			bSB = lambdaB-lambdaS
+		end
+
+		if abs(lambdaB-lambdaC) < threshold
+			bCB = 0
+		else
+			bCB=lambdaB-lambdaC
+		end
+
+S_LM1 = S_0*exp(rhoS*t) ;S cells in LM1 medium
+
+S_DM17 = S_0*exp(-lambdaS*t)  ; S cells in DM17 medium
+
+if bSC != 0 ; there are two different cases for C. This is the first one
+   c2 = deltaSC*S_0/bSC
+   c1 = C_0-c2
+   C  = c1*exp(-lambdaC*t)+c2*exp(-lambdaS*t)
+
+   if bCB==0 ; there are three subcases for B in that case
+      b  = (b_0 - deltaCB*c2/bSB+deltaCB*c1*t)*exp(-lambdaB*t) + deltaCB*c2/bSB*exp(-lambdaS*t)
+   elseif bSB==0
+      b  = (b_0-deltaCB*c1/bCB+deltaCB*c2*t)*exp(-lambdaB*t) + deltaCB*c1/bCB*exp(-lambdaC*t)
+   else
+      b  = (b_0-deltaCB*c1/bCB-deltaCB*c2/bSB)*exp(-lambdaB*t)+deltaCB*c1/bCB*exp(-lambdaC*t)+deltaCB*c2/bSB*exp(-lambdaS*t)
+   end
+
+else  ;second possible case for the dynamics of C
+   c2 = deltaSC*S_0
+   c1 = C_0
+   C  = (c1+c2*t)*exp(-lambdaS*t)
+
+   if bCB!=0 ; there are two subcases for B in that case
+      b  = (b_0-(deltaCB*c1-deltaCB*c2/bSB)/bSB)*exp(-lambdaB*t) + ((deltaCB*c1-deltaCB*c2/bSB)/bSB+(deltaCB*c2/bSB)*t)*exp(-lambdaC*t)
+   else
+      b  = (b_0+deltaCB*c1*t+deltaCB*c2*t*t)*exp(-lambdaC*t)
+   end
+end
+
+Tpred=S_DM17+C+b
+
+	OBSERVATION:
+DEFINITION:
+S = {distribution=normal, prediction=S_LM1, errorModel=proportional(b1)}
+T = {distribution=normal, prediction=Tpred, errorModel=proportional(b2)}
+B = {distribution=normal, prediction=b, errorModel=proportional(b3)}
+
+<FIT>
+data = {B, S, T}
+model = {B, S, T}
+
+<PARAMETER>
+b1 = {value=1, method=MLE}
+b2 = {value=1, method=MLE}
+b3 = {value=1, method=MLE}
+eta_deltaCB_pop = {value=0, method=FIXED}
+eta_deltaSC_pop = {value=0, method=FIXED}
+eta_rhoC_pop = {value=0, method=FIXED}
+omega_deltaSC = {value=5, method=MLE}
+omega_rhoS = {value=5, method=MLE}
+rhoB_pop = {value=0.1, method=MLE}
+rhoC_pop = {value=0.1, method=MLE}
+rhoS_pop = {value=0.1, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(method = ImportanceSampling)
+plotResult(method = {outputplot, indfits, obspred, parameterdistribution, covariatemodeldiagnosis, randomeffects, covariancemodeldiagnosis, saemresults })
+
+[SETTINGS]
+GLOBAL:
+seed = 1629283797
+exportpath = '../'
+nbchains = 10
+autochains = no
+
+POPULATION:
+exploratoryautostop = no
+smoothingautostop = no
+smoothingiterations = 1000
+exploratoryiterations = 5000
+
+LL:
+methodll = optimized
+

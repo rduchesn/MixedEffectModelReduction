@@ -1,0 +1,8 @@
+rhoS_pop	1.00000	nan	nan	0.00693	-0.01237	0.06096	-0.10070	-0.05771
+rhoC_pop	nan	nan	nan	nan	nan	nan	nan	nan
+rhoB_pop	nan	nan	nan	nan	nan	nan	nan	nan
+omega_rhoS	0.00693	nan	nan	1.00000	0.01503	0.03755	-0.05535	-0.03147
+omega_deltaSC	-0.01237	nan	nan	0.01503	1.00000	0.03080	-0.00475	0.03925
+b1	0.06096	nan	nan	0.03755	0.03080	1.00000	-0.11602	-0.07408
+b2	-0.10070	nan	nan	-0.05535	-0.00475	-0.11602	1.00000	0.09976
+b3	-0.05771	nan	nan	-0.03147	0.03925	-0.07408	0.09976	1.00000

@@ -1,0 +1,15 @@
+#temporary files
+*~
+
+#vim files:
+*.swp
+
+#python files:
+scripts/__pycache__/
+*.pyc
+
+#ipython files:
+scripts/.ipynb_checkpoints/
+
+#monolix garbage:
+**/*.dat
